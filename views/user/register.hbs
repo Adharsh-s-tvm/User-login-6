@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/styles/userlogin.css">
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" id="login-formr" method="post" action="/user/register" >
+                <input type="text" id="login-username" placeholder="username" />
+                <input type="email" id="email" placeholder="email address" />
+                <input type="password" id="password" placeholder="password"  />
+                <input type="password" id="confirmpassword" placeholder="confirm password"  />
+                <button type="submit">Create Account</button>
+                <p class="message">Already registered? <a href="http://localhost:8080/user/login">Sign In</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', function(){
+
+        document.querySelector('form').addEventListener('submit', formValidate)
+
+    });
+
+    function formValidate(e) {
+
+            e.preventDefault();
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            let confirmpassword = document.getElementById('confirmpassword').value;
+            if ( password == '' || confirmpassword == '') {
+                Swal.fire('All fields required');
+                return false;
+            } else if (password != confirmpassword) {
+                Swal.fire("Password does not match");
+                return false;
+            }
+
+            e.target.submit();
+            return true;
+
+        }
+
+
+
+
+</script>
